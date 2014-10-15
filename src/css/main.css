@@ -1,0 +1,400 @@
+/**********************************************/
+/* Common                                     */
+/**********************************************/
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../font/Montserrat/Montserrat-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'MontserratBold';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../font/Montserrat/Montserrat-Bold.ttf') format('truetype');
+}
+
+html {
+  background : #222222;
+  color : #ffffff;
+  font-family: Helvetica, Arial, sans-serif;
+  -webkit-user-select: none;
+  cursor: default;
+}
+
+body {
+    margin: 0;
+}
+
+
+
+/**********************************************/
+/* Scrollbars                                 */
+/**********************************************/
+
+::-webkit-scrollbar
+{
+	width: 7px;
+	background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb
+{
+	border-radius: 4px;
+	background-color: #1a1a1a;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #111;
+}
+::-webkit-scrollbar-thumb:active {
+  background-color: #090909;
+}
+
+
+
+/**********************************************/
+/* Structure                                  */
+/**********************************************/
+
+header, content, footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+header {
+  background: #1a1a1a;
+  height: 120px;
+  top : 0;
+}
+
+content {
+  top : 120px;
+  bottom : 40px;
+}
+
+footer {
+  bottom : 0;
+  height: 11px;
+}
+
+
+/**********************************************/
+/* Desktop APP Controls                       */
+/**********************************************/
+.desktop-only {
+  display: none;
+}
+
+.desktop-mode .desktop-only {
+  display: block;
+}
+
+#window-drag {
+  -webkit-app-region: drag;
+  height: 24px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: calc(24px*3);
+}
+
+#window-controls {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  z-index: 2;
+}
+
+#window-controls button {
+  background : transparent;
+  border: none;
+  color: #fff;
+  margin : 0;
+  padding : 0;
+  width : 24px;
+  height: 24px;
+  float: left;
+  outline: none;
+}
+
+#window-controls button:hover {
+  background-color : rgba(0, 130, 238, 0.5);
+}
+
+#window-controls button.minimize, #window-controls button.maximize, #window-controls button.close {
+  background-image : url(../images/controls.png);
+  background-repeat : no-repeat;
+}
+
+#window-controls button.unmaximize,
+#window-controls button.maximize {
+  background-position : 7px 7px;
+}
+
+#window-controls button.minimize {
+  background-position : -25px 7px;
+}
+
+#window-controls button.close {
+  background-position : -57px 7px;
+}
+
+
+/**********************************************/
+/* Header                                     */
+/**********************************************/
+
+h1 {
+  font-size: 12px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin: 20px;
+}
+
+
+/**********************************************/
+/* Song controls                              */
+/**********************************************/
+
+nav {
+  position: absolute;
+  bottom: 0px;
+  left: 20px;
+}
+
+nav, nav li {
+  margin : 0;
+  padding: 0;
+}
+
+nav li {
+  list-style: none;
+  float : left;
+}
+
+nav li button {
+  border-radius: 16px;
+  background : #aaa url(../images/controls.png) no-repeat;
+  border: none;
+  width: 32px;
+  height: 32px;
+  margin: 5px;
+  outline: none;
+  transition: background 0.2s ease-in-out, box-shadow 0.35s ease-in-out;
+}
+
+nav li button:hover {
+  background-color: #fff;
+  box-shadow: 0 0 7px 4px rgba(255,255,255,0.1);
+}
+
+#play, #pause {
+  border-radius: 25px;
+  width: 50px;
+  height: 50px;
+  position: relative;
+  top: -10px;
+}
+
+#pause {
+  background-position: -194px -23px;
+}
+
+#play {
+  background-position: -130px -23px;
+}
+
+#prev {
+  background-position: -17px -32px;
+}
+
+#next {
+  background-position: -78px -32px;
+}
+
+
+/**********************************************/
+/* Progress                                   */
+/**********************************************/
+#progress {
+  position: absolute;
+  bottom: 25px;
+  right: 20px;
+  left: 180px;
+}
+
+input[type=range]{
+  width: 100%;
+  -webkit-appearance:none !important;
+  height: 5px;
+  border-radius: 3px;
+  background: black;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance:none !important;
+  background: #aaa;
+  height: 10px;
+  width: 10px;
+  border-radius: 5px;
+  transition: background 0.2s ease-in-out, box-shadow 0.35s ease-in-out;
+}
+
+
+input[type="range"]:focus::-webkit-slider-thumb,
+input[type="range"]:hover::-webkit-slider-thumb {
+  background: #fff;
+}
+
+input[type="range"]:focus::-webkit-slider-thumb {
+  box-shadow: 0 0 6px rgb(84, 152, 255), inset 0 0 2px rgb(0, 173, 255);
+}
+
+
+input[type="range"][disabled] {
+  background: #111;
+}
+
+input[type="range"][disabled]::-webkit-slider-thumb {
+   display: none;
+}
+
+
+
+/**********************************************/
+/* Footer                                     */
+/**********************************************/
+
+footer {
+  font-size: 11px;
+  color: #888;
+  padding: 20px;
+}
+
+/**********************************************/
+/* Playlist                                   */
+/**********************************************/
+
+content {
+  overflow: auto;
+}
+
+
+content li {
+  list-style-type: decimal;
+  list-style-position: inside;
+  padding : 3px 20px;
+  margin : 0;
+  background : #202020;
+  font-size: 12px;
+  color:#aaa;
+  transition: background 0.2s ease-in-out;
+  position: relative;
+}
+
+content li:nth-child(2) {
+  background: #232323;
+}
+
+
+content li:hover {
+  background : #333;
+  color:#ccc;
+}
+
+content li.selected {
+  background : #444;
+  color:#ccc;
+}
+
+content li.current {
+  background: #864000;
+  color: #111;
+}
+
+content li.playing.current {
+  background: #ffa100;
+  color: #111;
+}
+
+content li.playing.current:before,
+content li.current:before {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  content : '.';
+  color: transparent;
+  background: url(../images/controls.png) no-repeat -21px -82px;
+}
+
+content li.current:before {
+  background-position: -47px -82px;
+}
+
+
+/**********************************************/
+/* Welcome panel                              */
+/**********************************************/
+
+#welcome {
+  border: 3px dashed #1c1c1c;
+  border-radius: 10px;
+  padding: 20px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+}
+
+#welcome button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 200px;
+  min-height: 100px;
+  margin: -50px 0 0 -100px;
+  padding: 20px;
+  background: #1c1c1c;
+  border: none;
+  color: #888;
+  text-transform: uppercase;
+  border-radius: 2px;
+  /*box-shadow: 0 0 0 2px #161616, 0 10px 0px 2px #161616;*/
+  text-align: center;
+  outline: none;
+  transition: background 0.5s ease-in, color 0.8s ease-out;
+  cursor : pointer;
+}
+
+
+#welcome button:before {
+  background: url(../images/controls.png) no-repeat -25px -127px;
+  width: 28px;
+  height: 28px;
+  content : '.';
+  color: transparent;
+  display: block;
+  margin: 0 auto 10px;
+  opacity: 0.2;
+  transition: opacity 0.8s ease-out;
+}
+
+
+#welcome button:hover {
+  color: #fff;
+  background: #1a1a1a;
+}
+
+#welcome button:hover:before {
+  opacity: 1;
+}

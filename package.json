@@ -1,0 +1,15 @@
+{
+  "name": "Noise - RST Demo App",
+  "main": "index.html",
+  "window": {
+    "frame": false,
+    "toolbar": false,
+    "icon": "src/images/icon.png",
+    "min_width" : 280,
+    "min_height": 320
+  },
+  "dependencies": {
+    "node-notifier": "^4.0.2",
+    "userdir": "^0.1.3"
+  }
+}

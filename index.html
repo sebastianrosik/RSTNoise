@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="noise">
+    <head>
+        <title>Noise</title>
+        <meta charset="utf8"/>
+        <link rel="stylesheet" href="src/css/main.css" type="text/css"/>
+        <script src="src/angular.js"></script>
+        <script src="src/js/controllers.js"></script>
+        <script src="src/js/directives.js"></script>
+        <script src="src/js/services.js"></script>
+        <script src="src/js/app.js"></script>
+    </head>
+    <body ng-controller="main" ng-class="{'desktop-mode':isDesktop()}">
+        <div id="window-controls" class="desktop-only" ng-controller="winctrl">
+            <button class="minimize" ng-click="minimize()" title="Minimize"></button>
+            <button ng-show="winState!=2" class="maximize" ng-click="maximize()" title="Maximize"></button>
+            <button ng-show="winState==2" class="unmaximize" ng-click="unmaximize()" title="Restore"></button>
+            <button class="close" ng-click="close()" title="Close"></button>
+        </div>
+
+        <div id="window-drag" class="desktop-only"></div>
+
+        <header>
+            <h1>{{getCurrentSongName()}}</h1>
+            <nav>
+                <li><button id="prev" class="icon-prev" ng-click="prevSong()"></button></li>
+                <li><button id="play" class="icon-play" ng-hide="isPlaying()" ng-click="play()"></button></li>
+                <li><button id="pause" class="icon-pause" ng-show="isPlaying()" ng-click="pause()"></button></li>
+                <li><button id="next" class="icon-next" ng-click="nextSong()"></button></li>
+            </nav>
+            <div id="progress">
+                <input type="range" min="0" max="1" step="0.01" ng-disabled="!hasSelection()" ng-model="progress" ng-change="seek()"/>
+            </div>
+        </header>
+        <content>
+            <playlist items="playlist">
+                <li ng-class="{playing:isPlaying(),current:$index==currentSongIndex, selected:$index==selected}" ng-click="select($index)" ng-dblclick="play($index)" ng-repeat="item in playlist">{{item.fileName}}</li>
+            </playlist>
+            <div id="welcome" class="desktop-only" ng-hide="playlist.length!=0">
+                <button ng-click="addMusic()">Add music</button>
+            </div>
+            <input style="display:none;" type="file" multiple />
+        </content>
+        <footer>RST - Pomysły i technologie</footer>
+    </body>
+</html>
